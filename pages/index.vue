@@ -47,8 +47,9 @@ export default {
   name: 'Home',
   data(){
     return{
-      title: 'Test',
-      subtitle: 'Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...'
+      title: 'Country ISO-List',
+      subtitle: 'Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...',
+      description: 'Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...'
     }
   },
   created(){
@@ -68,6 +69,15 @@ export default {
       return this.$store.state.country.countries;
     }
   },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.description }
+      ]
+    }
+  }
 }
 </script>
 
