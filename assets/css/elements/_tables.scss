@@ -1,11 +1,27 @@
 /* ==========================================================================
    #TABLES
    ========================================================================== */
+table {
+  width: 100%;
+  background: $white;
+}
 
-/**
- * 1. Ensure tables fill up as much space as possible.
- */
-
- table {
-    width: 100%; /* [1] */
+thead{
+  th{
+    padding: 10px 5px;
   }
+}
+
+tbody{
+  tr{
+    background: $white;
+
+    &:hover{
+      background: $tertiary-color;
+    }
+    border-top: 1px solid $border-color;
+  }
+  td{
+    padding: 5px;
+  }
+}

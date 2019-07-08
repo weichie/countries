@@ -1,34 +1,41 @@
 <template>
-  <div class="container">
-    <h1 class="title">{{title}}</h1>
-    <h2 class="subtitle">{{subtitle}}</h2>
+  <div class="page-content">
+    <div class="container lg">
+      <div class="title">
+        <h1>{{title}}</h1>
+        <h2 class="subtitle">{{subtitle}}</h2>
+      </div>
 
-    <table v-if="countries && countries.length > 0">
-      <thead>
-        <tr>
-          <th>&nbsp;</th>
-          <th>Country</th>
-          <th>ISO 2</th>
-          <th>ISO 3</th>
-          <th>Numeric</th>
-          <th>Calling</th>
-          <th>Region</th>
-          <th>Web</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(country, i) in countries" :key="`country-${i}`">
-          <td><img :src="country.flag" :alt="country.name + '-flag'" /></td>
-          <td>{{country.name}}</td>
-          <td>{{country.alpha2Code}}</td>
-          <td>{{country.alpha3Code}}</td>
-          <td>{{country.numericCode}}</td>
-          <td>+{{country.callingCodes[0]}}</td>
-          <td>{{country.region}}</td>
-          <td>{{country.topLevelDomain[0]}}</td>
-        </tr>
-      </tbody>
-    </table>
+      <div class="panel">
+        test
+        <table v-if="countries && countries.length > 0">
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>Country</th>
+              <th>ISO 2</th>
+              <th>ISO 3</th>
+              <th>Numeric</th>
+              <th>Calling</th>
+              <th>Region</th>
+              <th>Web</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(country, i) in countries" :key="`country-${i}`">
+              <td><img :src="country.flag" :alt="country.name + '-flag'" /></td>
+              <td>{{country.name}}</td>
+              <td>{{country.alpha2Code}}</td>
+              <td>{{country.alpha3Code}}</td>
+              <td>{{country.numericCode}}</td>
+              <td>+{{country.callingCodes[0]}}</td>
+              <td>{{country.region}}</td>
+              <td>{{country.topLevelDomain[0]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 

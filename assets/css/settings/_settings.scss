@@ -19,30 +19,30 @@ $text-shadow		: 0 10px 20px rgba(0, 0, 0, .05);
 // Sometimes you may want $black and $white to be ‘almost black’ and ’off-white’
 $black			: #111111;
 $dark-gray		: #4b4b4d;
-$medium-gray		: #8a8a8a;
+$medium-gray	: #8a8a8a;
 $white			: #FFF;
 
 // Define your main colour palette by choosing the corporate main colors
-$primary-color		: #1eb1b0;
-$secondary-color	: #fdb913;
-$tertiary-color		: #4b4b4d;
-$quaternary-color	: #f26531;
-$quinary-color		: #aec637;
+$primary-color		: #374c70;
+$secondary-color	: #00b6e6;
+$tertiary-color		: #f8faff;
+$quaternary-color	: #ff6565;
+$quinary-color		: #35b47d;
 
 // Define the colours of your pages and text
-$body-color		: $white;
-$text-color		: #4d4d4f;
+$body-color		: #eef2f5;
+$text-color		: #4d4f5c;
 $text-color-light	: lighten($text-color, 30);
 
 // Choose a colour for your hyperlinks. Often this will be the $primary-color
-$link-color		: $primary-color;
+$link-color		    : $primary-color;
 $link-colorhover	: darken($link-color, 10);
 $link-colorvisited	: $link-color;
 $link-colorfocus	: darken($link-color, 10);
 
 // Basic grey background color
-$primary-bg-color	: #f1f1f1;
-$secondary-bg-color	: #f7f7f7;
+$primary-bg-color	: #eef2f5;
+$secondary-bg-color	: #f6f6f9;
 
 // Feedback colors
 $error-color		: $quaternary-color;
@@ -51,7 +51,7 @@ $success-color		: $quinary-color;
 // TEXTURE ================================================
 
 // Variables for your design’s borders.
-$border-color		: #eeeeee; //f4f4f4;
+$border-color		: #f1f1f3; //f4f4f4;
 $border-color-dark	: #e5e5e5;
 $input-border-color	: #dddddd;
 $border-style		: solid;

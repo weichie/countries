@@ -1,0 +1,10 @@
+.container{
+    border: 1px solid lime;
+    width: 95%;
+    margin: 0 auto;
+
+    &.lg    {max-width: 1300px;}
+    &.md    {max-width: 1100px;}
+    &.sm    {max-width: 800px;}
+    &.xs    {max-width: 600px;}
+}

@@ -10,12 +10,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { 
-
+	font-size: 38px;
 }
-
 
 h2 {
 
+	&.subtitle{
+		color: $text-color;
+		font-size: 16px;
+		font-weight: 400;
+	}
 }
 
 h3, dt {
@@ -23,6 +27,7 @@ h3, dt {
 }
 
 h4 {
+	font-size: 16px;
 	margin: 0 0 1em 0;
 }
 
