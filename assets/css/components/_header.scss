@@ -1,0 +1,58 @@
+header{
+   background: $white;
+   display: flex;
+   align-items: center;
+   height: 50px;
+   overflow: hidden;
+
+   .back-button{
+      border-right: 1px solid $border-color;
+      height: 50px; width: 50px;
+      position: relative;
+      display: block;
+      overflow: hidden;
+      transition: all .3s ease;
+      left: -50px;
+
+      &.active{
+         left: 0;
+      }
+
+      span{
+         display: block;
+         position: absolute;
+         border-left: 3px solid $primary-color;
+         border-bottom: 3px solid $primary-color;
+         width: 10px; height: 10px;
+         top: 50%; left: 50%;
+         transform: translate(-50%,-50%) rotate(45deg);
+         transition: all .2s ease;
+      }
+      &:hover span{
+         border-color: $secondary-color;
+      }
+   }
+}
+
+.searchform{
+   flex: .3;
+   transition: all .3s ease;
+
+   &.active{
+      margin-left: 25px;
+   }
+
+   input{
+      width: 100%;
+      outline: none;
+      padding: 5px;
+      font-size: 16px;
+      position: relative;
+      border-bottom: 1px solid transparent;
+      transition: border .2s ease;
+
+      &:focus{
+         border-color: $secondary-color;
+      }
+   }
+}

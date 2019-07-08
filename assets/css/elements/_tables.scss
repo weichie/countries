@@ -4,8 +4,14 @@
 table {
   width: 100%;
   background: $white;
-}
 
+  &.half{
+    width: 50%;
+  }
+}
+.left-td td:first-child{
+  font-weight: 700;
+}
 thead{
   th{
     padding: 10px 5px;

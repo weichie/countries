@@ -1,3 +1,26 @@
 .panel{
     background: $white;
 }
+.single-title{
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+
+    img{
+        height: 75px;
+        width: auto;
+        margin-right: 25px;
+    }
+    
+    h1{
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+}

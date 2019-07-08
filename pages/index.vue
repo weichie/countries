@@ -1,50 +1,53 @@
 <template>
   <div class="page-content">
     <div class="container lg">
-      <div class="title">
+      <div class="title text-center">
         <h1>{{title}}</h1>
         <h2 class="subtitle">{{subtitle}}</h2>
       </div>
+      <transition name="fade">
+        <div class="panel" v-if="countries.length > 0">
+          <!-- 
+            TODO: Add sort-options
+          <div class="filters">
+            <div class="search">
+              search
+            </div>
+          </div> -->
 
-      <div class="panel">
-        <div class="filters">
-          <div class="search">
-            search
-          </div>
-        </div><!-- filters -->
+          <table v-if="countries && countries.length > 0">
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Country</th>
+                <th>ISO 2</th>
+                <th>ISO 3</th>
+                <th>Numeric</th>
+                <th>Calling</th>
+                <th>Region</th>
+                <th>Web</th>
+              </tr>
+            </thead>
 
-        <table v-if="countries && countries.length > 0">
-          <thead>
-            <tr>
-              <th>&nbsp;</th>
-              <th>Country</th>
-              <th>ISO 2</th>
-              <th>ISO 3</th>
-              <th>Numeric</th>
-              <th>Calling</th>
-              <th>Region</th>
-              <th>Web</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr v-for="(country, i) in countries" :key="`country-${i}`">
-              <td><img :src="country.flag" :alt="country.name + '-flag'" /></td>
-              <td>
-                <nuxt-link :to="'/country/' + country.alpha3Code.toLowerCase()">
-                  {{country.name}}
-                </nuxt-link>
-              </td>
-              <td>{{country.alpha2Code}}</td>
-              <td>{{country.alpha3Code}}</td>
-              <td>{{country.numericCode}}</td>
-              <td>+{{country.callingCodes[0]}}</td>
-              <td>{{country.region}}</td>
-              <td>{{country.topLevelDomain[0]}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!-- ./panel -->
+            <tbody>
+              <tr v-for="(country, i) in countries" :key="`country-${i}`">
+                <td><img :src="country.flag" :alt="country.name + '-flag'" /></td>
+                <td>
+                  <nuxt-link :to="'/country/' + country.alpha3Code.toLowerCase()">
+                    {{country.name}}
+                  </nuxt-link>
+                </td>
+                <td>{{country.alpha2Code}}</td>
+                <td>{{country.alpha3Code}}</td>
+                <td>{{country.numericCode}}</td>
+                <td>+{{country.callingCodes[0]}}</td>
+                <td>{{country.region}}</td>
+                <td>{{country.topLevelDomain[0]}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- ./panel -->
+      </transition>
     </div><!-- ./container -->
   </div><!-- ./page-content -->
 </template>
@@ -63,8 +66,8 @@ export default {
     }
   },
   created(){
-    console.log(this.$store.state.country.countries.length);
-    if(!this.$store.state.country.countries.length){
+    if(this.$store.state.country.countries.length === 0){
+      console.log('Pulling Data...');
       axios.get('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;alpha3Code;region;callingCodes;flag;numericCode;currencies;topLevelDomain')
         .then(res => {
           this.$store.commit('country/add', res.data)
