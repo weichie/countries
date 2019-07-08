@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Settings css
+   ========================================================================== */
+
+/// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
+/// @type Number
+$global-font-size	: 100% !default;
+
+// TYPOGRAPHY ================================================
+
+// Define your design’s typography by setting a base typeface and size
+$base-font-family	: "Gill Sans", "Gill Sans MT", "Roboto", "Arial", sans-serif;
+$base-font-size		: 16px;
+$base-line-height	: 1.5;
+$text-shadow		: 0 10px 20px rgba(0, 0, 0, .05);
+
+// COLOUR ================================================
+
+// Sometimes you may want $black and $white to be ‘almost black’ and ’off-white’
+$black			: #111111;
+$dark-gray		: #4b4b4d;
+$medium-gray		: #8a8a8a;
+$white			: #FFF;
+
+// Define your main colour palette by choosing the corporate main colors
+$primary-color		: #1eb1b0;
+$secondary-color	: #fdb913;
+$tertiary-color		: #4b4b4d;
+$quaternary-color	: #f26531;
+$quinary-color		: #aec637;
+
+// Define the colours of your pages and text
+$body-color		: $white;
+$text-color		: #4d4d4f;
+$text-color-light	: lighten($text-color, 30);
+
+// Choose a colour for your hyperlinks. Often this will be the $primary-color
+$link-color		: $primary-color;
+$link-colorhover	: darken($link-color, 10);
+$link-colorvisited	: $link-color;
+$link-colorfocus	: darken($link-color, 10);
+
+// Basic grey background color
+$primary-bg-color	: #f1f1f1;
+$secondary-bg-color	: #f7f7f7;
+
+// Feedback colors
+$error-color		: $quaternary-color;
+$success-color		: $quinary-color;
+
+// TEXTURE ================================================
+
+// Variables for your design’s borders.
+$border-color		: #eeeeee; //f4f4f4;
+$border-color-dark	: #e5e5e5;
+$input-border-color	: #dddddd;
+$border-style		: solid;
+$border-width		: 1px;
+$border-radius		: 0px;
+$input-border-color	: #d2d2d2;
+$global-radius		: 0px;
+
+// The default css transition
+// css easing anmiation tool: http://matthewlein.com/ceaser/
+$default-transition-timing-function		: cubic-bezier(0.230, 1.000, 0.320, 1.000); // easeOutQuint
+$default-transition						: all .3s $default-transition-timing-function;
+$btn-transition							: all .3s $default-transition-timing-function;
+

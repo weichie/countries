@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Generic css
+   ========================================================================== */
+
+@import 'page';
+@import 'typography';
+@import 'links';
+@import 'images';
+@import 'tables';
+
+
+/* Remove the inner shadow of input fields
+----------------------------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}

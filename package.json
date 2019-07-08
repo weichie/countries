@@ -1,0 +1,23 @@
+{
+  "name": "countries",
+  "version": "1.0.0",
+  "description": "Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...",
+  "author": "Bob",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.18.9",
+    "sass-loader": "^7.1.0",
+    "tailwindcss": "^1.0.0"
+  }
+}

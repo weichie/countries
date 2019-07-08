@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Links css
+   ========================================================================== */
+a {
+
+    //color : $link-color;
+    color: inherit;
+    transition: all .3s ease;
+    text-decoration: none;
+  
+  
+    &:visited {
+      color: inherit;
+    }
+  
+    &:hover {
+      color : $link-colorhover;
+      cursor: pointer;
+  
+      svg {
+        fill: $link-colorhover;
+      }
+    }
+    
+    &:hover,
+    &:active {
+      outline : 0;
+    }
+  
+    &.is-active {
+      color: $quaternary-color;
+      svg {
+        fill: $quaternary-color;
+  
+  
+      }
+  
+      &:hover {
+        color: darken($quaternary-color, 10);
+        svg {
+          fill: darken($quaternary-color, 10);
+        }
+      }
+    }
+}
+
+// https://css-tricks.com/links-inline-svg-staying-target-events/
+a > svg {
+    pointer-events: none;
+}

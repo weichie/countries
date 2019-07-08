@@ -1,0 +1,37 @@
+/* ==========================================================================
+   #PAGE css
+   ========================================================================== */
+/*
+    Elements: Page
+    ---
+    Default markup for page level elements
+*/
+
+html,
+body {
+  //overflow-x: hidden;  // No horizontal scrollbar
+  height: 100%;
+}
+
+html {
+  font-size: 100%;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent; //$lightest-neutral-color;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  //height: 100%;
+  background-color: $white;
+  color: $text-color;
+  font-family: $base-font-family;
+  line-height : $base-line-height;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: $text-color;
+  color: $white;
+  text-shadow: none;
+}
