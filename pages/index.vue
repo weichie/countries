@@ -7,7 +7,12 @@
       </div>
 
       <div class="panel">
-        test
+        <div class="filters">
+          <div class="search">
+            search
+          </div>
+        </div><!-- filters -->
+
         <table v-if="countries && countries.length > 0">
           <thead>
             <tr>
@@ -21,10 +26,15 @@
               <th>Web</th>
             </tr>
           </thead>
+
           <tbody>
             <tr v-for="(country, i) in countries" :key="`country-${i}`">
               <td><img :src="country.flag" :alt="country.name + '-flag'" /></td>
-              <td>{{country.name}}</td>
+              <td>
+                <nuxt-link :to="'/country/' + country.alpha3Code.toLowerCase()">
+                  {{country.name}}
+                </nuxt-link>
+              </td>
               <td>{{country.alpha2Code}}</td>
               <td>{{country.alpha3Code}}</td>
               <td>{{country.numericCode}}</td>
@@ -34,9 +44,9 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
+      </div><!-- ./panel -->
+    </div><!-- ./container -->
+  </div><!-- ./page-content -->
 </template>
 
 <script>
@@ -67,6 +77,12 @@ export default {
   computed: {
     countries() {
       return this.$store.state.country.countries;
+    },
+    
+  },
+  filters: {
+    urlify(val){
+      return val.replace(/\s+/g, '-').toLowerCase();
     }
   },
   head () {
