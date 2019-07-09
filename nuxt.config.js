@@ -30,6 +30,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: "~/plugins/vue2-google-charts.js" }
   ],
   /*
   ** Nuxt.js modules
@@ -61,6 +62,7 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    }
+    },
+    transpile: ["vue2-google-charts"]
   }
 }

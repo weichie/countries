@@ -2,3 +2,8 @@
 .text-right       {text-align: right;}
 .text-left        {text-align: left;}
 
+.flex                {display: flex;}
+.flex-row            {flex-direction: row;}
+.flex-row-inverse    {flex-direction: row-inverse;}
+.flex-column         {flex-direction: column;}
+.flex-column-inverse {flex-direction: column-inverse;}
