@@ -1,6 +1,9 @@
 .panel{
     background: $white;
 }
+.panel-body{
+  padding: 50px;
+}
 .single-title{
     border-bottom: 1px solid $border-color;
     display: flex;
@@ -18,9 +21,34 @@
     }
 }
 
+.surroundings{
+  border: 1px solid red;
+  font-size: 14px;
+  span{
+    &:after{
+      content: ', ';
+    }
+
+    &:last-child:after{
+      content: none;
+    }
+  }
+  a{
+    color: $primary-color;
+
+    &:hover{
+      color: $secondary-color;
+    }
+  }
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to{
   opacity: 0;
+}
+
+#regions_div{
+  width: 50%;
 }
