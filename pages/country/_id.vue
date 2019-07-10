@@ -95,6 +95,10 @@
                </div>
             </div><!-- ./panel -->
          </transition>
+
+         <p v-if="!country.name" class="mb-m10 text-center">
+            Loanding country data...
+         </p>
       </div><!-- ./container -->
    </div>
 </template>
@@ -113,7 +117,6 @@ export default {
    mounted(){
       axios.get(`https://restcountries.eu/rest/v2/alpha/${this.$route.params.id}`)
          .then(res => {
-            console.log(res.data);
             this.country = res.data;
             this.drawRegionsMap();
             this.displayBorders();
@@ -141,7 +144,7 @@ export default {
          ]);
 
          const options = {
-            title:this.country.name,
+            title: this.country.name,
             legend: 'none'
          };
          const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
@@ -154,7 +157,7 @@ export default {
    },
    head(){
     return {
-      title: this.country.name + ' country information',
+      title: this.country.name + ' country information, ISO-codes, population, currecies, localestring, ...',
       meta: [
          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
          { 

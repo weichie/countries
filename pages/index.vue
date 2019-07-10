@@ -6,7 +6,7 @@
         <h2 class="subtitle">{{subtitle}}</h2>
       </div>
       <transition name="fade">
-        <div class="panel" v-if="countries.length > 0">
+        <div class="panel" v-if="countries && countries.length > 0">
           <!-- 
             TODO: Add sort-options
           <div class="filters">
@@ -15,7 +15,7 @@
             </div>
           </div> -->
 
-          <table v-if="countries && countries.length > 0">
+          <table>
             <thead>
               <tr>
                 <th>&nbsp;</th>
@@ -45,9 +45,13 @@
                 <td>{{country.topLevelDomain[0]}}</td>
               </tr>
             </tbody>
-          </table>
+          </table>          
         </div><!-- ./panel -->
       </transition>
+
+      <p v-if="countries && countries.length === 0" class="m-0 text-center">
+        Loanding countries...
+      </p>
     </div><!-- ./container -->
   </div><!-- ./page-content -->
 </template>
@@ -61,27 +65,14 @@ export default {
   data(){
     return{
       title: 'Country ISO-List',
-      subtitle: 'Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...',
+      subtitle: 'All the country information you need',
       description: 'Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...'
-    }
-  },
-  created(){
-    if(this.$store.state.country.countries.length === 0){
-      console.log('Pulling Data...');
-      axios.get('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;alpha3Code;region;callingCodes;flag;numericCode;currencies;topLevelDomain')
-        .then(res => {
-          this.$store.commit('country/add', res.data)
-        })
-        .catch(err => {
-          console.error('Error: ', err);
-        });
     }
   },
   computed: {
     countries() {
-      return this.$store.state.country.countries;
+      return (this.$store.getters['country/getSearch'] !== '') ? this.$store.getters['country/results'] : this.$store.getters['country/all'];
     },
-    
   },
   filters: {
     urlify(val){
@@ -90,7 +81,7 @@ export default {
   },
   head () {
     return {
-      title: this.title,
+      title: 'Country ISO-List - Population, size, area, ISO, ALPHA, country codes and more...',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.description }

@@ -33,7 +33,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: "~/plugins/vue2-google-charts.js" }
+    { src: "~/plugins/vue2-google-charts.js" },
+    { ssr: false, src: "~/plugins/loadCountries.js" }
   ],
   /*
   ** Nuxt.js modules
