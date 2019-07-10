@@ -1,6 +1,14 @@
 # countries
 
-> Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...
+Get all the country information you need! Alpha-codes, ISO-codes, Flags, currencies, ... This project uses the counrties REST api to pull all the data.
+
+**Live demo:** [countries.weichie.com](https://countries.weichie.com/)
+
+> This project is still in the setup phase.
+
+#### Project Stack
+- Nuxtjs (Vuex, Axios, vue-router)
+- Currently setup as SPA in history mode, but not sure if I'm keeping it that way
 
 ## Build Setup
 
