@@ -2,22 +2,18 @@
    #TABLES
    ========================================================================== */
 table {
-  width: 100%;
+  @apply w-full;
   background: $white;
 
-  &.half{
-    width: 50%;
-  }
+  &.half  {@apply w-1/2;}
 }
 
 .left-td td:first-child{
-  font-weight: 700;
+  @apply font-bold;
 }
 
 thead{
-  th{
-    @apply py-4 px-2;
-  }
+  th  {@apply py-4 px-2;}
 }
 
 tbody{
@@ -29,7 +25,5 @@ tbody{
     }
     border-top: 1px solid $border-color;
   }
-  td{
-    @apply p-2;
-  }
+  td  {@apply p-2;}
 }

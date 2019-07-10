@@ -1,4 +1,4 @@
-import axios from 'Axios';
+import axios from 'axios'
 
 export default ({ app: { store } }) => {
     if(store.state.country.countries.length === 0){

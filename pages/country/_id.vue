@@ -1,6 +1,6 @@
 <template>
    <div class="page-content">
-      <div class="container lg">
+      <div class="container m-auto">
          <transition name="fade">
             <div class="panel" v-show="country.name">
                <div class="single-title">
@@ -147,6 +147,7 @@ export default {
             title: this.country.name,
             legend: 'none'
          };
+
          const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
          chart.draw(data, options);
@@ -157,7 +158,7 @@ export default {
    },
    head(){
     return {
-      title: this.country.name + ' country information, ISO-codes, population, currecies, localestring, ...',
+      title: this.country.name + ' / ' + this.country.nativeName + ' country information, ISO-codes, population, currecies, localestring, ...',
       meta: [
          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
          { 

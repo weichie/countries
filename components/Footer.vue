@@ -1,11 +1,8 @@
 <template>
-    <footer class="border mb-10">
-        <div class="container text-center">
-            <nav>
-                <nuxt-link to="/about">About the project</nuxt-link>
-            </nav>
+    <footer class="mb-10">
+        <div class="container m-auto text-center">
             <p class="mt-1 mb-0">
-                A project by <a href="https://weichieprojects.com" target="_blank">WeichieProjects</a>.
+                A <a href="https://weichieprojects.com" target="_blank">WeichieProjects</a> Project.
             </p>
         </div>
     </footer>

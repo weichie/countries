@@ -1,6 +1,6 @@
 <template>
   <div class="page-content">
-    <div class="container lg">
+    <div class="container m-auto">
       <div class="mb-10 text-center">
         <h1 class="mb-2">{{title}}</h1>
         <h2 class="subtitle">{{subtitle}}</h2>
@@ -19,7 +19,7 @@
             <thead>
               <tr>
                 <th>&nbsp;</th>
-                <th>Country</th>
+                <th @click="sortByCol('name')">Country</th>
                 <th>ISO 2</th>
                 <th>ISO 3</th>
                 <th>Numeric</th>
@@ -57,9 +57,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { mapActions } from 'vuex'
-
 export default {
   name: 'Home',
   data(){
@@ -73,6 +70,16 @@ export default {
     countries() {
       return (this.$store.getters['country/getSearch'] !== '') ? this.$store.getters['country/results'] : this.$store.getters['country/all'];
     },
+  },
+  methods: {
+    sortByCol(key) {
+      const test = this.countries.sort(function(a, b) {
+        let x = a[key]; let y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      });
+      console.log(test);
+      return test;
+    }
   },
   filters: {
     urlify(val){
