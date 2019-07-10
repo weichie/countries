@@ -8,6 +8,7 @@ Get all the country information you need! Alpha-codes, ISO-codes, Flags, currenc
 
 #### Project Stack
 - Nuxtjs (Vuex, Axios, vue-router)
+- Google Charts for displaying country map
 - Currently setup as SPA in history mode, but not sure if I'm keeping it that way
 
 ## Build Setup
