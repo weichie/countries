@@ -1,8 +1,8 @@
 <template>
   <div class="page-content">
     <div class="container lg">
-      <div class="title text-center">
-        <h1>{{title}}</h1>
+      <div class="mb-10 text-center">
+        <h1 class="mb-2">{{title}}</h1>
         <h2 class="subtitle">{{subtitle}}</h2>
       </div>
       <transition name="fade">

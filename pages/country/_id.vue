@@ -85,7 +85,7 @@
                   <div class="surroundings" v-show="country.borders">
                      <p>
                         Surrounding countries:
-                        <span v-for="(item, i) in country.borders" :key="i">
+                        <span v-for="(item, i) in country.borders" :key="'neighbour-' + i">
                            <nuxt-link :to="'/country/' + item.toLowerCase()">
                               {{item}}
                            </nuxt-link>
@@ -101,7 +101,7 @@
 
 <script>
 import axios from 'axios';
-import { key } from '@/googleMapKey.js';
+// import { key } from '@/googleMapKey.js';
 
 export default {
    name: 'Single',
@@ -111,7 +111,6 @@ export default {
       }
    },
    mounted(){
-      console.log(key);
       axios.get(`https://restcountries.eu/rest/v2/alpha/${this.$route.params.id}`)
          .then(res => {
             console.log(res.data);
@@ -137,12 +136,12 @@ export default {
       },
       drawRegionsMap() {
          const data = google.visualization.arrayToDataTable([
-            ['Country', 'Popularity'],
+            ['Country', 'Population'],
             [this.country.name, this.country.population],
          ]);
 
          const options = {
-            title:'How Much Pizza I Ate Last Night',
+            title:this.country.name,
             legend: 'none'
          };
          const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));

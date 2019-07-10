@@ -6,9 +6,10 @@ Get all the country information you need! Alpha-codes, ISO-codes, Flags, currenc
 
 > This project is still in the setup phase.
 
-#### Project Stack
+#### Dependencies
 - Nuxtjs (Vuex, Axios, vue-router)
 - Google Charts for displaying country map
+- Purgecss to cleanup unused css (tailwindcss)
 - Currently setup as SPA in history mode, but not sure if I'm keeping it that way
 
 ## Build Setup

@@ -22,6 +22,9 @@ export default {
   /*
   ** Global CSS
   */
+  router: {
+    mode: 'hash'
+  },
   css: [
     '~/assets/css/tailwind.css',
     '~/assets/css/main.scss'
@@ -38,7 +41,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
   ],
   /*
   ** Axios module configuration

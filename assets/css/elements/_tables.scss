@@ -9,12 +9,14 @@ table {
     width: 50%;
   }
 }
+
 .left-td td:first-child{
   font-weight: 700;
 }
+
 thead{
   th{
-    padding: 10px 5px;
+    @apply py-4 px-2;
   }
 }
 
@@ -28,6 +30,6 @@ tbody{
     border-top: 1px solid $border-color;
   }
   td{
-    padding: 5px;
+    @apply p-2;
   }
 }
