@@ -4,9 +4,9 @@
          <span></span>
       </nuxt-link>
 
-      <form 
-         action="" 
-         class="searchform" 
+      <form
+         action=""
+         class="searchform"
          :class="{'active': $route.name !== 'index'}"
          @submit.prevent="searchCountry">
          <input v-model="search" type="text" placeholder="Search name, iso, currency, region, ..." >
@@ -31,15 +31,15 @@ export default {
          this.doSearch(this.search);
       },
       doSearch(term){
-         const helper = [];
+         const searchTerms = [];
 
          this.$store.getters['country/all'].map(country => {
             if(country.name.toLowerCase().includes(term.toLowerCase()) || country.alpha2Code.toLowerCase().includes(term.toLowerCase()) || country.alpha3Code.toLowerCase().includes(term.toLowerCase())){
-               helper.push(country);
+               searchTerms.push(country);
             }
          });
 
-         this.$store.commit('country/updateSearchResults', helper);
+         this.$store.commit('country/updateSearchResults', searchTerms);
       }
    },
 }
