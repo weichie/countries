@@ -1,7 +1,6 @@
 header{
+   @apply flex items-center;
    background: $white;
-   display: flex;
-   align-items: center;
    height: 50px;
    overflow: hidden;
 
@@ -37,6 +36,7 @@ header{
 .searchform{
    flex: .3;
    transition: all .3s ease;
+   min-width: 250px;
 
    &.active{
       margin-left: 25px;
@@ -55,4 +55,22 @@ header{
          border-color: $secondary-color;
       }
    }
+}
+
+a.reset-btn {
+   display: inline-block;
+   margin-left: 15px;
+   font-size: 12px;
+   padding: 5px 10px;
+   color: $white;
+   background: $primary-color;
+   transition: background .25s ease, opacity .5s ease;
+
+   &:hover {
+      background: lighten($primary-color, 8%);
+   }
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

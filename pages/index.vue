@@ -1,13 +1,13 @@
 <template>
   <div class="page-content">
-    <div class="container lg">
-      <div class="title text-center">
-        <h1>{{title}}</h1>
+    <div class="container m-auto">
+      <div class="mb-10 text-center">
+        <h1 class="mb-2">{{title}}</h1>
         <h2 class="subtitle">{{subtitle}}</h2>
       </div>
       <transition name="fade">
-        <div class="panel" v-if="countries.length > 0">
-          <!-- 
+        <div class="panel" v-if="countries && countries.length > 0">
+          <!--
             TODO: Add sort-options
           <div class="filters">
             <div class="search">
@@ -15,11 +15,11 @@
             </div>
           </div> -->
 
-          <table v-if="countries && countries.length > 0">
+          <table>
             <thead>
               <tr>
                 <th>&nbsp;</th>
-                <th>Country</th>
+                <th @click="sortByCol('name')">Country</th>
                 <th>ISO 2</th>
                 <th>ISO 3</th>
                 <th>Numeric</th>
@@ -33,7 +33,7 @@
               <tr v-for="(country, i) in countries" :key="`country-${i}`">
                 <td><img :src="country.flag" :alt="country.name + '-flag'" /></td>
                 <td>
-                  <nuxt-link :to="'/country/' + country.alpha3Code.toLowerCase()">
+                  <nuxt-link :to="'/country/' + country.alpha3Code.toLowerCase()" class="gt-home-country">
                     {{country.name}}
                   </nuxt-link>
                 </td>
@@ -48,49 +48,42 @@
           </table>
         </div><!-- ./panel -->
       </transition>
+
+      <p v-if="countries && countries.length === 0" class="m-0 text-center">
+        Loanding countries...
+      </p>
     </div><!-- ./container -->
   </div><!-- ./page-content -->
 </template>
 
 <script>
-import axios from 'axios'
-import { mapActions } from 'vuex'
-
 export default {
   name: 'Home',
   data(){
     return{
       title: 'Country ISO-List',
-      subtitle: 'Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...',
+      subtitle: 'All the country information you need',
       description: 'Get all country information you need! Alpha-codes, ISO-codes, Flags, currencies, ...'
-    }
-  },
-  created(){
-    if(this.$store.state.country.countries.length === 0){
-      console.log('Pulling Data...');
-      axios.get('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;alpha3Code;region;callingCodes;flag;numericCode;currencies;topLevelDomain')
-        .then(res => {
-          this.$store.commit('country/add', res.data)
-        })
-        .catch(err => {
-          console.error('Error: ', err);
-        });
     }
   },
   computed: {
     countries() {
-      return this.$store.state.country.countries;
+      return (this.$store.getters['country/getSearch'] !== '') ? this.$store.getters['country/results'] : this.$store.getters['country/all'];
     },
-    
   },
-  filters: {
-    urlify(val){
-      return val.replace(/\s+/g, '-').toLowerCase();
+  methods: {
+    sortByCol(key) {
+      const test = this.countries.sort(function(a, b) {
+        let x = a[key]; let y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      });
+      console.log(test);
+      return test;
     }
   },
   head () {
     return {
-      title: this.title,
+      title: 'Country ISO-List - Population, size, area, ISO, ALPHA, country codes and more...',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.description }

@@ -1,44 +1,40 @@
 .panel{
-    background: $white;
+  background: $white;
 }
 .panel-body{
-  padding: 50px;
+  @apply p-10;
 }
 .single-title{
+    @apply flex items-center;
     border-bottom: 1px solid $border-color;
-    display: flex;
-    align-items: center;
 
     img{
-        height: 75px;
-        width: auto;
-        margin-right: 25px;
+      height: 75px;
+      width: auto;
+      margin-right: 25px;
     }
-    
+
     h1{
-        font-size: 30px;
-        margin-bottom: 5px;
+      font-size: 30px;
+      margin-bottom: 5px;
     }
 }
 
 .surroundings{
-  border: 1px solid red;
+  margin-top: 25px;
+  padding: 5px;
   font-size: 14px;
-  span{
-    &:after{
-      content: ', ';
-    }
+  max-width: 50%;
 
-    &:last-child:after{
-      content: none;
-    }
+  p   {margin: 0;}
+
+  span{
+    &:after             {content: ', ';}
+    &:last-child:after  {content: none;}
   }
   a{
     color: $primary-color;
-
-    &:hover{
-      color: $secondary-color;
-    }
+    &:hover   {color: $secondary-color;}
   }
 }
 
@@ -50,5 +46,5 @@
 }
 
 #regions_div{
-  width: 50%;
+  @apply w-1/2;
 }

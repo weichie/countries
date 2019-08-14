@@ -2,20 +2,19 @@
    #TABLES
    ========================================================================== */
 table {
-  width: 100%;
+  @apply w-full;
   background: $white;
 
-  &.half{
-    width: 50%;
-  }
+  &.half  {@apply w-1/2;}
 }
+
 .left-td td:first-child{
-  font-weight: 700;
+  @apply font-bold;
+  min-width: 140px;
 }
+
 thead{
-  th{
-    padding: 10px 5px;
-  }
+  th  {@apply py-4 px-2;}
 }
 
 tbody{
@@ -27,7 +26,5 @@ tbody{
     }
     border-top: 1px solid $border-color;
   }
-  td{
-    padding: 5px;
-  }
+  td  {@apply p-2;}
 }
