@@ -10,6 +10,7 @@ Get all the country information you need! Alpha-codes, ISO-codes, Flags, currenc
 - Nuxtjs (Vue 2, Vue Router, Vuex, Vue Server Render, vue-meta)
 - Axios
 - Google Charts for displaying country map
+- @nuxtjs Google Analytics & Tag manager
 
 Currently setup as SPA in hash mode, but not sure if I'm keeping it that way
 

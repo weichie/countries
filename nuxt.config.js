@@ -34,7 +34,8 @@ export default {
   */
   plugins: [
     { src: "~/plugins/vue2-google-charts.js" },
-    { ssr: false, src: "~/plugins/loadCountries.js" }
+    { ssr: false, src: "~/plugins/loadCountries.js" },
+    { src: "~plugins/filters.js" },
   ],
   /*
   ** Nuxt.js modules
@@ -43,6 +44,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/google-analytics',
+    ['@nuxtjs/google-tag-manager', { id: 'GTM-WVSNR6G' }],
   ],
   /*
   ** Axios module configuration
@@ -51,7 +53,7 @@ export default {
   axios: {
   },
   googleAnalytics: {
-    id: 'UA-139852260-2'
+    id: 'UA-139852260-2',
   },
   /*
   ** Build configuration

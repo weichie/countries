@@ -34,11 +34,11 @@
                            </tr>
                            <tr>
                               <td>Area</td>
-                              <td>{{ country.area }} <small>km<sup>2</sup></small></td>
+                              <td>{{ country.area | formatNumber }} <small>km<sup>2</sup></small></td>
                            </tr>
                            <tr>
                               <td>Population</td>
-                              <td>{{ country.population }}</td>
+                              <td>{{ country.population | formatNumber }} <small>people</small></td>
                            </tr>
                            <tr>
                               <td>Timezone<span v-if="country.timezones && country.timezones.length > 1">s</span></td>
@@ -72,7 +72,7 @@
                      </table>
 
                      <GChart
-                        :settings="{ 
+                        :settings="{
                            'packages':['geochart'],
                            'callback': drawRegionsMap
                         }"
@@ -82,12 +82,12 @@
                      />
                   </div>
 
-                  <div class="surroundings" v-show="country.borders">
+                  <div class="surroundings" v-show="displayBorders && displayBorders.length > 0">
                      <p>
-                        Surrounding countries:
-                        <span v-for="(item, i) in country.borders" :key="'neighbour-' + i">
-                           <nuxt-link :to="'/country/' + item.toLowerCase()">
-                              {{item}}
+                        Surrounding countries ({{displayBorders.length}}): <br>
+                        <span v-for="(item, i) in displayBorders" :key="'neighbour-' + i">
+                           <nuxt-link :to="'/country/' + item[0].alpha3Code.toLowerCase()" class="gt-border-country">
+                              {{item[0].name}}
                            </nuxt-link>
                         </span>
                      </p>
@@ -105,13 +105,13 @@
 
 <script>
 import axios from 'axios';
-// import { key } from '@/googleMapKey.js';
 
 export default {
    name: 'Single',
    data(){
       return{
          country: {},
+         borders: [],
       }
    },
    mounted(){
@@ -119,24 +119,12 @@ export default {
          .then(res => {
             this.country = res.data;
             this.drawRegionsMap();
-            this.displayBorders();
          })
          .catch(err => {
             console.error('Error:', err);
          });
    },
    methods: {
-      mapLanguages(val){
-         if(!val) return false; 
-         return val;
-      },
-      formatter(){
-         return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 2
-         });
-      },
       drawRegionsMap() {
          const data = google.visualization.arrayToDataTable([
             ['Country', 'Population'],
@@ -152,19 +140,33 @@ export default {
 
          chart.draw(data, options);
       },
+   },
+   computed: {
       displayBorders(){
-         console.log(this.country.borders);
-      }
+         const allCountries = this.$store.getters['country/all'];
+         const borderCountries = [];
+
+         if(this.country.borders && this.country.borders.length > 1) {
+            this.country.borders.forEach(e => {
+               let add = allCountries.filter(country => {
+                  return country.alpha3Code === e;
+               });
+               borderCountries.push(add);
+            });
+         }
+
+         return borderCountries;
+      },
    },
    head(){
     return {
       title: this.country.name + ' / ' + this.country.nativeName + ' country information, ISO-codes, population, currecies, localestring, ...',
       meta: [
          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-         { 
-            hid: 'description', 
-            name: 'description', 
-            content: `All country information about ${this.country.name}. ISO-codes, population, currency, languages, area, ...` 
+         {
+            hid: 'description',
+            name: 'description',
+            content: `All country information about ${this.country.name}. ISO-codes, population, currency, languages, area, ...`
          }
       ]
     }

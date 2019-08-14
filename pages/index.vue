@@ -7,7 +7,7 @@
       </div>
       <transition name="fade">
         <div class="panel" v-if="countries && countries.length > 0">
-          <!-- 
+          <!--
             TODO: Add sort-options
           <div class="filters">
             <div class="search">
@@ -33,7 +33,7 @@
               <tr v-for="(country, i) in countries" :key="`country-${i}`">
                 <td><img :src="country.flag" :alt="country.name + '-flag'" /></td>
                 <td>
-                  <nuxt-link :to="'/country/' + country.alpha3Code.toLowerCase()">
+                  <nuxt-link :to="'/country/' + country.alpha3Code.toLowerCase()" class="gt-home-country">
                     {{country.name}}
                   </nuxt-link>
                 </td>
@@ -45,7 +45,7 @@
                 <td>{{country.topLevelDomain[0]}}</td>
               </tr>
             </tbody>
-          </table>          
+          </table>
         </div><!-- ./panel -->
       </transition>
 
@@ -79,11 +79,6 @@ export default {
       });
       console.log(test);
       return test;
-    }
-  },
-  filters: {
-    urlify(val){
-      return val.replace(/\s+/g, '-').toLowerCase();
     }
   },
   head () {

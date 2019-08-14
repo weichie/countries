@@ -11,6 +11,10 @@
          @submit.prevent="searchCountry">
          <input v-model="search" type="text" placeholder="Search name, iso, currency, region, ..." >
       </form>
+
+      <transition name="fade">
+         <a class="reset-btn" href="#" v-if="search && search.length > 0" @click.prevent="resetSearch()">Reset Search</a>
+      </transition>
    </header>
 </template>
 
@@ -40,7 +44,11 @@ export default {
          });
 
          this.$store.commit('country/updateSearchResults', searchTerms);
-      }
+      },
+      resetSearch(){
+         this.doSearch('');
+         this.search = '';
+      },
    },
 }
 </script>

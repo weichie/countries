@@ -10,6 +10,7 @@ table {
 
 .left-td td:first-child{
   @apply font-bold;
+  min-width: 140px;
 }
 
 thead{
